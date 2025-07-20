@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './App.css'
+import './App.css';
+
 const BASE_URL = import.meta.env.VITE_API_BASE;
 
-const fetchUsers = async () => {
-  const res = await axios.get(`${BASE_URL}/api/users`);
-};
-<<<<<<< HEAD
-=======
-
->>>>>>> d3b783a (save local changes before pull)
 
 
 const App = () => {
@@ -25,25 +19,25 @@ const App = () => {
   }, []);
 
   const fetchUsers = async () => {
-    const res = await axios.get('http://localhost:5000/api/users');
+    const res = await axios.get(`${BASE_URL}/api/users`);
     setUsers(res.data);
   };
 
   const fetchLeaderboard = async () => {
-    const res = await axios.get('http://localhost:5000/api/users/leaderboard');
+    const res = await axios.get(`${BASE_URL}/api/users/leaderboard`);
     setLeaderboard(res.data);
   };
 
   const handleClaim = async () => {
     if (!selectedUser) return;
-    const res = await axios.post(`http://localhost:5000/api/claim/${selectedUser}`);
+    const res = await axios.post(`${BASE_URL}/api/claim/${selectedUser}`);
     setPointsAwarded(res.data.points);
     fetchLeaderboard();
   };
 
   const handleAddUser = async () => {
     if (!newUserName) return;
-    const res = await axios.post('http://localhost:5000/api/users', { name: newUserName });
+    const res = await axios.post(`${BASE_URL}/api/users`, { name: newUserName });
     setNewUserName('');
     fetchUsers();
     fetchLeaderboard();
@@ -95,4 +89,3 @@ const App = () => {
 };
 
 export default App;
-
