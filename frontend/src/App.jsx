@@ -6,6 +6,10 @@ const BASE_URL = import.meta.env.VITE_API_BASE;
 const fetchUsers = async () => {
   const res = await axios.get(`${BASE_URL}/api/users`);
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d3b783a (save local changes before pull)
 
 
 const App = () => {
