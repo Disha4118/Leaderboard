@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css'
+const BASE_URL = import.meta.env.VITE_API_BASE;
+
+const fetchUsers = async () => {
+  const res = await axios.get(`${BASE_URL}/api/users`);
+};
+
 
 const App = () => {
   const [users, setUsers] = useState([]);
