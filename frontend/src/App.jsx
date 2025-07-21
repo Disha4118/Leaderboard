@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await fetch(`${API_BASE}api/users/leaderboard`);
+        const response = await fetch(new URL("/api/users/leaderboard", API_BASE));
         const data = await response.json();
         const sorted = data.sort((a, b) => b.totalPoints - a.totalPoints);
         setLeaderboardData(sorted);
