@@ -8,6 +8,11 @@ router.post('/:userId', async (req, res) => {
   const randomPoints = Math.floor(Math.random() * 10) + 1;
 
   const user = await User.findById(userId);
+
+if (!user) {
+  return res.status(404).json({ error: "User not found" });
+}
+
   user.totalPoints += randomPoints;
   await user.save();
 

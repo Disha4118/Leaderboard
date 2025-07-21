@@ -17,10 +17,12 @@ router.post('/', async (req, res) => {
 router.get('/leaderboard', async (req, res) => {
   const users = await User.find().sort({ totalPoints: -1 });
   const leaderboard = users.map((user, index) => ({
+    _id: user._id, 
     rank: index + 1,
     name: user.name,
     totalPoints: user.totalPoints,
   }));
+  console.log(leaderboard);
   res.json(leaderboard);
 });
 
